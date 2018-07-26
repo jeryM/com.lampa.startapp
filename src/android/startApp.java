@@ -269,16 +269,19 @@ public class startApp extends Assets {
 					cordova.setActivityResultCallback (this);
 					callbackContext = callback;
 					cordova.getActivity().startActivityForResult(LaunchIntent, 1);
-				}else {
+				}else{
 					if(params.has("intentstart") && "sendBroadcast".equals(params.getString("intentstart"))) {
-						cordova.getActivity().sendBroadcast(LaunchIntent);	
+					    cordova.getActivity().sendBroadcast(LaunchIntent);	
 					}
 					else {
 						cordova.getActivity().startActivity(LaunchIntent);	
 					}
-				
-					callback.sendPluginResult(pluginResult);
+					
 				}
+				
+				callback.sendPluginResult(pluginResult);
+				
+				
 			}
 			else {
 				callback.error("Incorrect params, array is not array object!");
@@ -389,12 +392,15 @@ public class startApp extends Assets {
 				result.put("_ACTION_requestCode_", requestCode);
 				result.put("_ACTION_resultCode_", resultCode);
 
-				Bundle bundle = intent.getExtras();
-				if (bundle != null) {
-					for (String key : bundle.keySet()) {
+				if(intent != null){
+					Bundle bundle = intent.getExtras();
+				    if (bundle != null) {
+					  for (String key : bundle.keySet()) {
 						result.put(key, bundle.get(key));
 					}
+				   }
 				}
+				
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
