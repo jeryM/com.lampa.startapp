@@ -280,8 +280,6 @@ public class startApp extends Assets {
 				}
 				
 				callback.sendPluginResult(pluginResult);
-				
-				
 			}
 			else {
 				callback.error("Incorrect params, array is not array object!");
@@ -395,9 +393,9 @@ public class startApp extends Assets {
 				if(intent != null){
 					Bundle bundle = intent.getExtras();
 				    if (bundle != null) {
-					  for (String key : bundle.keySet()) {
-						result.put(key, bundle.get(key));
-					}
+					    for (String key : bundle.keySet()) {
+						   result.put(key, bundle.get(key));
+					    }
 				   }
 				}
 				
